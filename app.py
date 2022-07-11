@@ -1,5 +1,6 @@
-from flask import Flask
-from main import app
+## __init__.py
 
-if __name__ == '__main__':
-    app.run (port = 8000, debug = True)
+from pages import app
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', debug=True, port=8000)
