@@ -36,6 +36,3 @@ def detail_get():
     print(book_list)
     return jsonify({'book': book_list})
 
-
-if __name__ == '__main__':
-    app.run('0.0.0.0', port=8000, debug=True)

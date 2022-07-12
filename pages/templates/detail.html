@@ -21,10 +21,10 @@
         function show_book() {
             $.ajax({
                 type: "GET",
-                url: "/detail",
+                url: "/detail/detail",
                 data: {},
                 success: function (response) {
-                   {#console.log(response)["book"]#}
+                   console.log(response)["book"]
                     let rows = (response)["book"]
                     for (let i = 0; i < rows.length; i++) {
                         let rank = rows[i]['rank']
