@@ -20,48 +20,28 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
-    <title>오늘의 책📚 | ranking_page</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Hahmlet:wght@300&family=Single+Day&display=swap"
-          rel="stylesheet">
-    <script>
-        $(document).ready(function () {
-            show();
-        });
+        <title>오늘의 책📚 | ranking_page</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Hahmlet:wght@300&family=Single+Day&display=swap"
+              rel="stylesheet">
+        <script>
+            $(document).ready(function () {
+                show();
+            });
 
-        function show() {
-            $.ajax({
-                type: "GET",
-                url: "/rank",
-                data: {},
-                success: function (response) {
-                    let rows = response['books']
-                    for (let i = 0; i < rows.lenght; i++)
-                         let rank = rows[i]['rank']
-                    let title = rows[i]['title']
-                    let writer = rows[i]['writer']
-                    let score = rows[i]['score']
-                    let image = rows[i]['image']
-
-                    let temp_html = `<div onclick="" class="card">
-                                        <img class="card-img-top" src="${image}">
-                                        <div class="card-body">
-                                            <h4 class="card-title">${title} , ${writer}</h4>
-                                            <p>${score}</p>
-                                            <p class="card-text">똑똑한 선택을 이끄는 힘</p>
-                                        </div>
-                                    </div>`
-                    $('#cards-box').append(temp_html)
-                }
-            })
-
-            function main-page() {
-
-        }
-
-    </script>
-</head>
+            function show() {
+                $.ajax({
+                    type: "GET",
+                    url: "/raking/rank",
+                    data: {},
+                    success: function (response) {
+                        console.log(response['books'])
+                    }
+                })
+            }
+        </script>
+    </head>
     <style>
         * {
             font-family: 'Black Han Sans', sans-serif;
@@ -140,6 +120,6 @@
             </div>
         </div>
     </div>
-</body>
+    </body>
 
-</html>
+    </html>
