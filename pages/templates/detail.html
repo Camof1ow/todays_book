@@ -24,12 +24,18 @@
                 url: "/detail",
                 data: {},
                 success: function (response) {
-                   console.log(response)["book"]
-                    {#for (let i = 0; i < rows.length; i++) {#}
-                    {#    let nu,#}
-                    {#}#}
-{#                }#}
-{#            });#}
+                   {#console.log(response)["book"]#}
+                    let rows = (response)["book"]
+                    for (let i = 0; i < rows.length; i++) {
+                        let rank = rows[i]['rank']
+                        let title = rows[i]['title']
+                        let writer = rows[i]['writer']
+                        let score = rows[i]['score']
+                        let image = rows[i]['image']
+                        let story = rows[i]['story']
+                    }
+                }
+            });
         }
 
         function save_book() {
