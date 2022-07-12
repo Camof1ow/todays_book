@@ -24,15 +24,11 @@ from .signup import signup
 from .ranking import ranking
 
 
-
-
 app.register_blueprint(main.blueprint) # main module
 app.register_blueprint(login.blueprint) # login module
 app.register_blueprint(detail.blueprint) # signup module
 app.register_blueprint(signup.blueprint) # detail module
 app.register_blueprint(ranking.blueprint) # ranking module
-
-
 
 
 if __name__ == '__main__':

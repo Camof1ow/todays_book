@@ -7,10 +7,10 @@
   --mobile-height: 670px;
   --mobile-radius: 25px;
   --separator-height: 500px;
-  --bg: #fdf3f2;
-  --mobile-bg: #fdeae6;
+  --bg: #565656;
+  --mobile-bg: #4d4747;
   --intro-bg: #eed7d1;
-  --font-color: #807b7b;
+  --font-color: #9a9a9a;
   --transition: transform 0.7s ease-in-out;
 }
 
