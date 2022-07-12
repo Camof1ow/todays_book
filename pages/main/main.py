@@ -24,9 +24,8 @@ def mainpage():
 @blueprint.route("/Tbook", methods=["GET"])
 def get_Tbook():
     num = random.randrange(1,40)
-    print(num)
     Tbook = db.bookinfo.find_one({'rank':str(num)},{'_id':False})
-    print(Tbook)
+
     return jsonify({'Tbook':Tbook})
 
 

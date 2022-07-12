@@ -23,7 +23,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script>
-        {#지울거임#}
+        {#지울거임}
 
         function toStartPage() {
             window.location.href = "/"
@@ -35,9 +35,9 @@
             alert("환영합니다 name 님")
         }
 
-        {#요고부터 시작합니다#}
+        {#요고부터시작합니다}
         //로그인 시작
-        {% if msg %}
+        { if msg }
             alert("{{ msg }}")
         {% endif %}
         function login() {

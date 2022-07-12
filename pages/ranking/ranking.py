@@ -21,10 +21,9 @@ blueprint = Blueprint("ranking", __name__, url_prefix='/ranking')
 def ranking():
     return render_template('ranking.html')
 
-
-
-@blueprint.route('/ranking/rank', methods=['GET'])
-def show():
+@blueprint.route('/rank', methods=['GET'])
+def ranklist():
     ranking_list =list(db.bookinfo.find({},{'_id':False}))
+    print(ranking_list)
     return jsonify({'books':ranking_list})
 

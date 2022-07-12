@@ -33,6 +33,5 @@ def detail():
 @blueprint.route("/detail", methods=["GET"])
 def detail_get():
     book_list = list(db.bookinfo.find({}, {'_id': False}))
-    print(book_list)
     return jsonify({'book': book_list})
 
