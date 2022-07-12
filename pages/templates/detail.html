@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -10,38 +11,144 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-
     <title>책 정보 페이지</title>
+
+    <script>
+        $(document).ready(function () {
+            show_book();
+        });
+
+        function show_book() {
+            $.ajax({
+                type: "GET",
+                url: "/detail",
+                data: {},
+                success: function (response) {
+                   console.log(response)["book"]
+                    {#for (let i = 0; i < rows.length; i++) {#}
+                    {#    let nu,#}
+                    {#}#}
+{#                }#}
+{#            });#}
+        }
+
+        function save_book() {
+            $.ajax({
+                type: "POST",
+                url: "/detail",
+                data: {sameple_give: '데이터전송'},
+                success: function (response) {
+                    alert(response["msg"])
+                }
+            });
+        }
+
+        function done_book(num) {
+            $.ajax({
+                type: "POST",
+                url: "/bucket/done",
+                data: {sameple_give: '데이터전송'},
+                success: function (response) {
+                    alert(response["msg"])
+                }
+            });
+        }
+
+    </script>
+  <style>
+        .first {
+            height: 600px;
+            background-color: lightgray;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .book {
+            width: 460px;
+            height: 670px;
+            background-color: #112233;
+        }
+
+        .info {
+            margin-left: 40px;
+        }
+
+        .back {
+            height: 1000px;
+            padding-top: 150px;
+            background-color: #555555;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        .comment {
+            width: 1040px;
+            background-color: #555555;
+            padding: 0px;
+        }
+
+
+    </style>
 </head>
 <body>
-<button onclick="window.location.href='/'">돌아가기</button>
-<div>
-    <div>표지</div>
-    <div>정보및줄거리</div>
-</div>
-<div>코멘트</div>
-
-<div class="mypost" id="post-box">
-    <div class="input-group mb-3">
-        <label class="input-group-text" for="inputGroupSelect01">별점</label>
-        <select class="form-select" id="star">
-            <option selected>-선택-</option>
-            <option value="1">⭐</option>
-            <option value="2">⭐⭐</option>
-            <option value="3">⭐⭐⭐</option>
-            <option value="4">⭐⭐⭐⭐</option>
-            <option value="5">⭐⭐⭐⭐⭐</option>
-        </select>
-    </div>
-    <div class="form-floating">
-        <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
-        <label for="floatingTextarea2">코멘트</label>
-    </div>
-    <div class="mybtns">
-        <button onclick="posting()" type="button" class="btn btn-dark">기록하기</button>
-        <button onclick="close_box()" type="button" class="btn btn-outline-dark">닫기</button>
+<nav class="navbar">
+    <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='/'">HOME</button>
+</nav>
+<div class="first">
+    <div class="book" style="background-image: url("");"></div>
+    <div class="info">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<div class="back">
+    <div class="card mb-3" style="width: 1040px; background-color: #555555; border-radius: 20px">
+        <div class="card-body">
+            <h5 class="card-title">⭐⭐⭐⭐⭐</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="comment">
+        <div class="mypost" id="post-box">
+            <div class="form-floating">
+                <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
+                <label for="floatingTextarea2">코멘트</label>
+            </div>
+            <div style="display: flex; align-items: center;" >
+                <div class="input-group mb-3" style="margin-top: 10px; width: 900px">
+                    <label class="input-group-text" for="inputGroupSelect01">별점</label>
+                    <select class="form-select" id="star">
+                        <option selected>-선택-</option>
+                        <option value="1">⭐</option>
+                        <option value="2">⭐⭐</option>
+                        <option value="3">⭐⭐⭐</option>
+                        <option value="4">⭐⭐⭐⭐</option>
+                        <option value="5">⭐⭐⭐⭐⭐</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-outline-secondary" style="margin-left: 40px">Secondary</button>
+                <div>
 
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 </body>
 </html>
