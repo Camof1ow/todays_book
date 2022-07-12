@@ -24,7 +24,7 @@
                 url: "/detail/detail",
                 data: {},
                 success: function (response) {
-                   console.log(response)["book"]
+                   {#console.log(response)["book"]#}
                     let rows = (response)["book"]
                     for (let i = 0; i < rows.length; i++) {
                         let rank = rows[i]['rank']
@@ -33,6 +33,18 @@
                         let score = rows[i]['score']
                         let image = rows[i]['image']
                         let story = rows[i]['story']
+
+                        let temp = `<h5 class="card-title">${title}</h5>
+                        <p class="card-text"><small class="text-muted">${writer}</small></p>
+                        <p class="card-text">${story}</p>`
+
+                        $('#body_data').append(temp)
+
+                        let temp_img =`<img src="${image}" alt="표지">`
+
+                        $('#book').append(temp)
+
+
                     }
                 }
             });
@@ -62,9 +74,16 @@
 
     </script>
   <style>
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #9c9f84;
+        }
+
         .first {
             height: 600px;
-            background-color: lightgray;
+            background-color: #f7dcb4;
             display: flex;
             justify-content: center;
             padding: 40px;
@@ -72,18 +91,18 @@
 
         .book {
             width: 460px;
-            height: 670px;
-            background-color: #112233;
+            height: 200px;
+            background-color: #f7dcb4;
         }
 
         .info {
-            margin-left: 40px;
+            margin-left: 50px;
         }
 
         .back {
             height: 1000px;
             padding-top: 150px;
-            background-color: #555555;
+            background-color: #5C755E;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -92,10 +111,24 @@
 
         .comment {
             width: 1040px;
-            background-color: #555555;
-            padding: 0px;
+            background-color: #9c9f84;
+            border-radius: 20px;
         }
-
+        .upload {
+            height: 200px;
+            width: 1040px;
+            padding: 20px;
+            border-radius: 20px;
+            background-color: #9c9f84;
+        }
+        .mybtns {
+            margin: 10px 0 0 10px;
+            display: flex;
+            justify-content: center;
+        }
+        img {
+            filter: drop-shadow(5px 5px 5px #000);
+        }
 
     </style>
 </head>
@@ -104,12 +137,14 @@
     <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='/'">HOME</button>
 </nav>
 <div class="first">
-    <div class="book" style="background-image: url("");"></div>
+    <div class="book">
+        <img src="https://bookthumb-phinf.pstatic.net/cover/225/379/22537949.jpg?udate=20220712" alt="표지">
+    </div>
     <div class="info">
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
+        <div class="card mb-3" style="max-width: 540px; border-radius: 20px">
+            <div class="row g-0" >
                 <div class="col-md-8">
-                    <div class="card-body">
+                    <div class="card-body" id="body_data">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
                             additional content. This content is a little bit longer.</p>
@@ -121,7 +156,7 @@
     </div>
 </div>
 <div class="back">
-    <div class="card mb-3" style="width: 1040px; background-color: #555555; border-radius: 20px">
+    <div class="card mb-3" style="width: 1040px; background-color: #9c9f84; border-radius: 20px">
         <div class="card-body">
             <h5 class="card-title">⭐⭐⭐⭐⭐</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
@@ -129,32 +164,27 @@
             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
         </div>
     </div>
-    <div class="comment">
-        <div class="mypost" id="post-box">
-            <div class="form-floating">
-                <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
-                <label for="floatingTextarea2">코멘트</label>
-            </div>
-            <div style="display: flex; align-items: center;" >
-                <div class="input-group mb-3" style="margin-top: 10px; width: 900px">
-                    <label class="input-group-text" for="inputGroupSelect01">별점</label>
-                    <select class="form-select" id="star">
-                        <option selected>-선택-</option>
-                        <option value="1">⭐</option>
-                        <option value="2">⭐⭐</option>
-                        <option value="3">⭐⭐⭐</option>
-                        <option value="4">⭐⭐⭐⭐</option>
-                        <option value="5">⭐⭐⭐⭐⭐</option>
-                    </select>
-                </div>
-                <button type="button" class="btn btn-outline-secondary" style="margin-left: 40px">Secondary</button>
-                <div>
+    <div class="upload"><div class="mypost" id="post-box">
 
-                </div>
-            </div>
-
-        </div>
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupSelect01">별점</label>
+        <select class="form-select" id="star">
+            <option selected>-- 선택하기 --</option>
+            <option value="1">⭐</option>
+            <option value="2">⭐⭐</option>
+            <option value="3">⭐⭐⭐</option>
+            <option value="4">⭐⭐⭐⭐</option>
+            <option value="5">⭐⭐⭐⭐⭐</option>
+        </select>
     </div>
+    <div class="form-floating">
+        <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
+        <label for="floatingTextarea2">코멘트</label>
+    </div>
+    <div class="mybtns">
+        <button onclick="posting()" type="button" class="btn btn-dark">기록하기</button>
+    </div>
+</div></div>
 </div>
 </body>
 </html>
