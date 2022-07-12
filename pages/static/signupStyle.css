@@ -126,9 +126,12 @@ h1 {
     margin: auto 0;
     border-radius: 30px;
     border: 1px solid black;
+<<<<<<< HEAD
 }
 
 .helpmsg{
     color: gray;
     font-size: xx-small;
+=======
+>>>>>>> origin/jp_comment
 }
