@@ -1,10 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>this is ranking page</h1>
-</body>
-</html>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+        <title>오늘의 책📚 | ranking_page</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Hahmlet:wght@300&family=Single+Day&display=swap"
+              rel="stylesheet">
+        <script>
+            $(document).ready(function () {
+                show();
+            });
+
+            function show() {
+                $.ajax({
+                    type: "GET",
+                    url: "/raking/rank",
+                    data: {},
+                    success: function (response) {
+                        console.log(response['books'])
+                    }
+                })
+            }
+        </script>
+    </head>
+    <style>
+        * {
+            font-family: 'Black Han Sans', sans-serif;
+            font-family: 'Cute Font', cursive;
+            font-family: 'Do Hyeon', sans-serif;
+            font-family: 'Hahmlet', serif;
+            font-family: 'Single Day', cursive;
+        }
+
+        .wrap {
+            width: 900px;
+            margin: auto;
+        }
+
+        .container {
+            padding-left: 50px;
+        }
+
+        .main-page {
+            margin-top: 20px;
+        }
+    </style>
+
+    <body>
+    <div class="wrap">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1>오늘의 책📚 Top25</h1>
+                <div class="main-page">
+                    <button onclick="main-page()" type="button" class="btn btn-light">Main page</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-columns" id="cards-box">
+            <div onclick="moving()" class="card">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">넛지</h5>
+                    <p class="card-text">똑똑한 선택을 이끄는 힘</p>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">넛지</h5>
+                    <p class="card-text">똑똑한 선택을 이끄는 힘</p>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">넛지</h5>
+                    <p class="card-text">똑똑한 선택을 이끄는 힘</p>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">넛지</h5>
+                    <p class="card-text">똑똑한 선택을 이끄는 힘</p>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">넛지</h5>
+                    <p class="card-text">똑똑한 선택을 이끄는 힘</p>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">넛지</h5>
+                    <p class="card-text">똑똑한 선택을 이끄는 힘</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+
+    </html>

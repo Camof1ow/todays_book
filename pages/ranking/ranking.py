@@ -1,5 +1,18 @@
 from pages import *
-from flask import Blueprint
+from flask import Blueprint, Flask, render_template, request, jsonify, redirect
+import requests
+from pymongo import MongoClient
+
+import hashlib
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+client = MongoClient(os.environ.get("CLIENT"))
+SECRET_KEY = os.environ.get("PRIVATE_KEY")
+
+db = client.dbsparta
 
 blueprint = Blueprint("ranking", __name__, url_prefix='/ranking')
 
@@ -7,3 +20,11 @@ blueprint = Blueprint("ranking", __name__, url_prefix='/ranking')
 @blueprint.route("/")
 def ranking():
     return render_template('ranking.html')
+
+
+
+@blueprint.route('/ranking/rank', methods=['GET'])
+def show():
+    ranking_list =list(db.bookinfo.find({},{'_id':False}))
+    return jsonify({'books':ranking_list})
+
