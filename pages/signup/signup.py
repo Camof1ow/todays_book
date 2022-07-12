@@ -6,7 +6,7 @@ blueprint = Blueprint("signup", __name__, url_prefix='/signup')
 
 @blueprint.route("/")
 def signup():
-    return render_template('signup.html')
+    return render_template('signup.html',title = '오늘의 책📚-회원가입')
 
 
 # 회원가입 API
@@ -33,12 +33,12 @@ def check_dup():
 def sign_up():
     username_receive = request.form['username_give']
     password_receive = request.form['password_give']
-    nickname_recrive = request.form['nickname_give']
+    nickname_receive = request.form['nickname_give']
     password_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
     doc = {
         "username": username_receive,  # 아이디
         "password": password_hash,  # 비밀번호
-        "nickname": nickname_recrive,  # 닉네임
+        "nickname": nickname_receive,  # 닉네임
     }
     db.users.insert_one(doc)
     return jsonify({'result': 'success'})
