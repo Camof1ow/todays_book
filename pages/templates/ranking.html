@@ -2,74 +2,74 @@
 <html lang="en">
 
 <head>
-     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href='{{ url_for("static", filename="main.css") }}' rel="stylesheet">
+    <link href='{{ url_for("static", filename="ranking.css") }}' rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>오늘의 책📚</title>
 
 
-
     <script>
+
         $(document).ready(function () {
-            show();
+            listing()
+
         });
 
-        function show() {
+
+        function listing() {
             $.ajax({
-                type: "GET",
-                url: "/ranking/rank",
+                type: 'GET',
+                url: '/ranking/rank',
                 data: {},
                 success: function (response) {
                     console.log(response)
+                    let rows = response['books']
+                    for (let i = 0; i < rows.length; i++) {
+                        let rank = rows[i]['rank']
+                        let title = rows[i]['title']
+                        let writer = rows[i]['writer']
+                        let score = rows[i]['score']
+                        let image = rows[i]['image']
+                        let story = rows[i]['story']
 
 
+                        let temp_html = `<div class="card-grid-space">
+                                            <div class="num">${rank}위</div>
+                                            <a class="card" href="/detail?id=${rank}"
+                                               style="--bg-img: url(${image})">
+                                                <div>
+                                                    <h2>${title}</h2>
+                                                    <p>${story}</p>
+                                                    <p>평점 ${score}</p>
+
+                                                </div>
+                                            </a>
+                                        </div>`
+                        $('#Section').append(temp_html)
+
+
+                    }
 
                 }
             })
+
         }
+
+
     </script>
 </head>
-<style>
-    * {
-        font-family: 'Black Han Sans', sans-serif;
-        font-family: 'Cute Font', cursive;
-        font-family: 'Do Hyeon', sans-serif;
-        font-family: 'Hahmlet', serif;
-        font-family: 'Single Day', cursive;
-    }
-
-    .wrap {
-        width: 900px;
-        margin: auto;
-    }
-
-    .container {
-        padding-left: 50px;
-    }
-
-    .main-page {
-        margin-top: 20px;
-    }
-</style>
 
 <body>
-<div class="wrap">
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1>오늘의 책📚 Top25</h1>
-            <div class="main-page">
-                <button onclick="main-page()" type="button" class="btn btn-light">Main page</button>
-            </div>
-        </div>
-    </div>
-    <div class="card-columns" id="cards-box">
 
+<section class="info">
+    <h1>오늘의 책📚 </h1>
+</section>
+<section class="cards-wrapper" id="Section">
 
-
-    </div>
-</div>
+    <!-- https://images.unsplash.com/photo-1520839090488-4a6c211e2f94?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=38951b8650067840307cba514b554ba5&auto=format&fit=crop&w=1350&q=80 -->
+</section>
 </body>
 
 </html>

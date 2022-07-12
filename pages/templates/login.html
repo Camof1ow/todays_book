@@ -4,16 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>오늘의책</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="../static/loginStyle.css">
-    <script>
-        function toStartPage() {
-            window.location.href = "/"
-        }
-    </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>오늘의책</title>
     <!-- 폰트 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
@@ -23,7 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script>
-        {#지울거임}
+        {#지울거임#}
 
         function toStartPage() {
             window.location.href = "/"
@@ -35,9 +25,9 @@
             alert("환영합니다 name 님")
         }
 
-        {#요고부터시작합니다}
+        {#요고부터 시작합니다#}
         //로그인 시작
-        { if msg }
+        {% if msg %}
             alert("{{ msg }}")
         {% endif %}
         function login() {
@@ -63,27 +53,6 @@
     </script>
 </head>
 <body>
-<div class="wrap">
-    <div class="login">
-        <h1>Log-in</h1>
-        <div class="login_id">
-            <h4>아이디</h4>
-            <input type="email" name="" id="" placeholder="아이디">
-        </div>
-        <div class="login_pw">
-            <h4>비밀번호</h4>
-            <input type="password" name="" id="" placeholder="비밀번호">
-        </div>
-        <div class="loginbtn">
-            <div class="submit">
-                <button>로그인</button>
-            </div>
-            <div class="cancel">
-                <button onclick="toStartPage()">취소</button>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="wrap">
     <div class="login">
         <h1>Log-in</h1>

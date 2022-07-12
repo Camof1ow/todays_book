@@ -19,34 +19,40 @@
         });
 
         function show_book() {
+            let query = window.location.search;
+            let param = new URLSearchParams(query);
+            let id = param.get("id");
+            console.log(id)
             $.ajax({
                 type: "GET",
                 url: "/detail/detail",
                 data: {},
                 success: function (response) {
-                   {#console.log(response)["book"]#}
+                   console.log(response["book"])
                     let rows = (response)["book"]
-                    for (let i = 0; i < rows.length; i++) {
-                        let rank = rows[i]['rank']
-                        let title = rows[i]['title']
-                        let writer = rows[i]['writer']
-                        let score = rows[i]['score']
-                        let image = rows[i]['image']
-                        let story = rows[i]['story']
 
-                        let temp = `<h5 class="card-title">${title}</h5>
-                        <p class="card-text"><small class="text-muted">${writer}</small></p>
-                        <p class="card-text">${story}</p>`
+                    let rank = rows[id -1]['rank']
+                    let title = rows[id -1]['title']
+                    let writer = rows[id -1]['writer']
+                    let score = rows[id -1]['score']
+                    let image = rows[id -1]['image']
+                    let story = rows[id -1]['story']
 
-                        $('#body_data').append(temp)
+                    temp_image = `<img src="${image}" alt="표지">`
 
-                        let temp_img =`<img src="${image}" alt="표지">`
+                    $('#image').append(temp_image)
 
-                        $('#book').append(temp)
+
+                    let temp = `<h5 class="card-title">${title}</h5>
+                                <p class="card-text"><small class="text-muted">${writer}</small></p>
+                                <p class="card-text">${story}</p>`
+
+                    $('#body_data').append(temp)
+
 
 
                     }
-                }
+
             });
         }
 
@@ -137,18 +143,15 @@
     <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='/'">HOME</button>
 </nav>
 <div class="first">
-    <div class="book">
-        <img src="https://bookthumb-phinf.pstatic.net/cover/225/379/22537949.jpg?udate=20220712" alt="표지">
+    <div class="book" id="image">
+
     </div>
     <div class="info">
         <div class="card mb-3" style="max-width: 540px; border-radius: 20px">
             <div class="row g-0" >
                 <div class="col-md-8">
                     <div class="card-body" id="body_data">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
                     </div>
                 </div>
             </div>

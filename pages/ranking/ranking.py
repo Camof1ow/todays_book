@@ -24,6 +24,5 @@ def ranking():
 @blueprint.route('/rank', methods=['GET'])
 def ranklist():
     ranking_list =list(db.bookinfo.find({},{'_id':False}))
-    print(ranking_list)
     return jsonify({'books':ranking_list})
 
