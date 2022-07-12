@@ -10,6 +10,11 @@
     <script>
         function toStartPage() {
             window.location.href = "/"
+            alert("회원가입을 취소합니다.")
+        }
+        function tologinPage() {
+            window.location.href = "/login"
+            alert("회원가입을 축하드립니다.")
         }
     </script>
 </head>
@@ -36,7 +41,7 @@
         </div>
         <div class="signupbtn">
             <div class="submit">
-                <button>회원가입</button>
+                <button onclick="tologinPage()">회원가입</button>
             </div>
             <div class="cancel">
                 <button onclick="toStartPage()">취소</button>
