@@ -10,6 +10,12 @@
     <script>
         function toStartPage() {
             window.location.href = "/"
+            alert("로그인을 취소했습니다.")
+        }
+
+        function toMainPage() {
+            window.location.href = "/main"
+            alert("환영합니다 name 님")
         }
     </script>
 </head>
@@ -27,7 +33,7 @@
         </div>
         <div class="loginbtn">
             <div class="submit">
-                <button>로그인</button>
+                <button onclick="toMainPage()">로그인</button>
             </div>
             <div class="cancel">
                 <button onclick="toStartPage()">취소</button>
