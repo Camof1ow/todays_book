@@ -8,6 +8,7 @@ import hashlib
 import os
 from dotenv import load_dotenv
 
+
 load_dotenv() #환경변수 호출
 
 client = MongoClient(os.environ.get("CLIENT")) #pymongo db 경로

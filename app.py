@@ -1,5 +1,3 @@
-## __init__.py
-
 from pages import app
 
 if __name__ == "__main__":
