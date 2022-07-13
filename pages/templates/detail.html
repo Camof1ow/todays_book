@@ -5,13 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-    <title>책 정보 페이지</title>
+
+    <link rel="stylesheet" href="/pages/static/detail.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
+
+    <title>책 정보 페이지 📚</title>
 
     <script>
         $(document).ready(function () {
@@ -47,11 +52,13 @@
                     $('#image').append(temp_image)
 
 
-                    let temp = `<h5 class="card-title">${title}</h5>
-                                <p class="card-text"><small class="text-muted">${writer}</small></p>
-                                <p class="card-text">${story}</p>`
+                    let temp1 = `<div style="display: flex; align-items: center; height: 50px; margin-bottom: 5px">
+                                     <h1>${title}</h1>
+                                     <h5 style="margin-left: 20px">${writer}</h5>
+                                 </div>
+                                <span class="book_name">${story}</span>`
 
-                    $('#body_data').append(temp)
+                    $('#body_data').append(temp1)
 
 
                 }
@@ -106,14 +113,12 @@
 
                         console.log("get id" + ids)
 
-
                         if (ids === id_comment) {
-                            temp_comment = `<div class="card mb-3" style="width: 1040px; background-color: #9c9f84; border-radius: 20px">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">${star_image}</h5>
-                                                    <p class="card-text">${book_comment}</p>
-                                                    <p class="card-text"><small class="text-muted">${date}</small></p>
-                                                </div>
+                            temp_comment = `<div class="card3">
+                                                 <p class="comment-item">
+                                                    <span>${star_image}</span> <span>${date}<</span>
+                                                 </p>
+                                                 <span>${book_comment}</span>
                                             </div>`
 
                             $('#book_comment').append(temp_comment)
@@ -124,114 +129,65 @@
         }
 
     </script>
-    <style>
-
-        .navbar {
-            display: flex;
-            justify-content: center;
-            background-color: #9c9f84;
-        }
-
-        .first {
-            height: 600px;
-            background-color: #f7dcb4;
-            display: flex;
-            justify-content: space-around;
-            padding: 40px;
-        }
-
-        .book {
-            width: 460px;
-            height: 200px;
-            background-color: #f7dcb4;
-        }
-
-        .info {
-            margin-left: 50px;
-        }
-
-        .back {
-            height: 1000px;
-            padding-top: 150px;
-            background-color: #5C755E;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-
-        .comment {
-            width: 1040px;
-            background-color: #9c9f84;
-            border-radius: 20px;
-        }
-
-        .upload {
-            height: 200px;
-            width: 1040px;
-            padding: 20px;
-            border-radius: 20px;
-            background-color: #9c9f84;
-        }
-
-        .mybtns {
-            margin: 10px 0 0 10px;
-            display: flex;
-            justify-content: center;
-        }
-
-        img {
-            filter: drop-shadow(5px 5px 5px #000);
-        }
-
-    </style>
 </head>
 <body>
-<nav class="navbar">
-    <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='/'">HOME</button>
-</nav>
-<div class="first">
-    <div class="book" id="image">
+<div class='container' style="display: flex; flex-direction: column">
+    <div class="btn-group" style="margin-bottom: 10px;">
+            <button style="background-color: #77aaee; border-radius: 10px; border-color: white;" onclick="window.location.href='/'">HOME</button>
+            <button style="background-color: white; border-radius: 10px; border-color: white;" onclick="window.location.href='/ranking'">BACK</button>
+        </div>
+    <div class='window'>
+        <div class='order-info'>
+            <div class='order-info-content'>
+                <div class='line'></div>
+                <table class='order-table'>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="card1" id="image">
 
-    </div>
-    <div class="info">
-        <div class="card mb-3" style="max-width: 540px; border-radius: 20px">
-            <div class="row g-0">
-                <div class="col-md-8">
-                    <div class="card-body" id="body_data">
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class='line'>
+                </div>
+                <div class='total' id="body_data">
 
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="back" id="book_comment">
+        <div class='credit-info'>
+            <div class='credit-info-content'>
+                <table class='half-input-table'>
+                    <tr>
+                        <td>Comments:</td>
+                    </tr>
+                </table>
+                <div class="commentbox" id="book_comment">
 
+                </div>
+                별점:
+                <div class="input-group mb-3">
+                    <select class="input-field" id="star">
+                        <option selected>-- 선택하기 --</option>
+                        <option value="1">⭐</option>
+                        <option value="2">⭐⭐</option>
+                        <option value="3">⭐⭐⭐</option>
+                        <option value="4">⭐⭐⭐⭐</option>
+                        <option value="5">⭐⭐⭐⭐⭐</option>
+                    </select>
+                </div>
+                댓글입력:
+                <input id="comment" class='input-field'></input>
+                <button class='pay-btn' onclick="posting()">등록하기</button>
 
-    <div class="upload">
-        <div class="mypost" id="post-box">
+            </div>
 
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupSelect01">별점</label>
-                <select class="form-select" id="star">
-                    <option selected>-- 선택하기 --</option>
-                    <option value="1">⭐</option>
-                    <option value="2">⭐⭐</option>
-                    <option value="3">⭐⭐⭐</option>
-                    <option value="4">⭐⭐⭐⭐</option>
-                    <option value="5">⭐⭐⭐⭐⭐</option>
-                </select>
-            </div>
-            <div class="form-floating">
-                <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
-                <label for="floatingTextarea2">코멘트</label>
-            </div>
-            <div class="mybtns">
-                <button onclick="posting()" type="button" class="btn btn-dark">기록하기</button>
-            </div>
         </div>
     </div>
 </div>
+
 </body>
 </html>
