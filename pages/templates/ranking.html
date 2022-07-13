@@ -10,55 +10,7 @@
     <title>오늘의 책📚</title>
 
 
-    <script>
 
-        $(document).ready(function () {
-            listing()
-
-        });
-
-
-        function listing() {
-            $.ajax({
-                type: 'GET',
-                url: '/ranking/rank',
-                data: {},
-                success: function (response) {
-                    console.log(response)
-                    let rows = response['books']
-                    for (let i = 0; i < rows.length; i++) {
-                        let rank = rows[i]['rank']
-                        let title = rows[i]['title']
-                        let writer = rows[i]['writer']
-                        let score = rows[i]['score']
-                        let image = rows[i]['image']
-                        let story = rows[i]['story']
-
-
-                        let temp_html = `<div class="card-grid-space">
-                                            <div class="num">${rank}위</div>
-                                            <a class="card" href="/detail?id=${title}"
-                                               style="--bg-img: url(${image})">
-                                                <div>
-                                                    <h2>${title}</h2>
-                                                    <p>${story}</p>
-                                                    <p>평점 ${score}</p>
-
-                                                </div>
-                                            </a>
-                                        </div>`
-                        $('#Section').append(temp_html)
-
-
-                    }
-
-                }
-            })
-
-        }
-
-
-    </script>
 </head>
 
 <body>
@@ -67,8 +19,22 @@
     <h1>오늘의 책📚 </h1>
 </section>
 <section class="cards-wrapper" id="Section">
+    {% for row in rows %}
+    <div class="card-grid-space">
+        <div class="num">{{ row['rank'] }}위</div>
+        <a class="card" href="/detail?id={{ row['title'] }}"
+           style="--bg-img: url({{ row['image'] }})">
+            <div>
+                <h2>{{ row['title'] }}</h2>
+                <p>{{ row['story'] }}</p>
+                <p>평점 {{ row['score'] }}</p>
 
-    <!-- https://images.unsplash.com/photo-1520839090488-4a6c211e2f94?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=38951b8650067840307cba514b554ba5&auto=format&fit=crop&w=1350&q=80 -->
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+
+
 </section>
 </body>
 

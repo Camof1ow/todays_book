@@ -23,7 +23,7 @@ def login():
     if result is not None:
         payload = {
             'id': username_receive,
-            'exp': datetime.datetime.utcnow() + timedelta(seconds=10)  # 로그인 24시간 유지
+            'exp': datetime.datetime.utcnow() + timedelta(seconds=60*60)  # 로그인 24시간 유지
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
         return jsonify({'result': 'success', 'token': token, 'msg': username_receive+' '+'님 환영합니다.'})

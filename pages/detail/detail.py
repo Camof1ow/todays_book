@@ -27,6 +27,7 @@ def detail():
         return redirect("/")
 
 
+
 @blueprint.route("/detail", methods=["GET"])
 def detail_get():
     book_list = list(db.bookinfo.find({}, {'_id': False}))

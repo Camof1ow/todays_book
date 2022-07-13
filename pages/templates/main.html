@@ -8,61 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>오늘의 책📚</title>
 
-    <script>
-        $(document).ready(function () {
-            Tbook();
-        });
-        function Tbook() {
-            $.ajax({
-                type: 'GET',
-                url: '/Tbook',
-                data: {},
-                success: function (response) {
-                    let book = response["Tbook"]
-                    let rank = book['rank']
-                    let title = book['title']
-                    let writer = book['writer']
-                    let story = book['story']
-                    let image = book['image']
 
-                    temp_html = `
-                                    <div class="info">
-                                        오늘의 ${rank}위!
-                                    </div>
-                                    <div class="mobile-layout">
-
-                                        <div class="actions">
-                                            <i class="fas fa-chevron-left"></i>
-                                            <i class="fas fa-bookmark"></i>
-                                        </div>
-                                        <div class="book-cover">
-                                            <img class="book-top" src="${image}"
-                                                 width="200" height="252" alt="book-top"/>
-                                            <img class="book-side"
-                                                 src="https://raw.githubusercontent.com/atomic-variable/images-repo/e37f432405904a280858e5437ce1960753bc78a3/book-side.svg"
-                                                 alt="book-side"/>
-                                        </div>
-                                        <div class="preface">
-                                            <div class="content">
-                                                <div class="header">
-                                                    <div class="title">${title}</div>
-                                                    <div class="icon">
-                                                        <i class="fas fa-chevron-down"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="author">저자 ${writer} </div>
-                                                <div class="body">
-                                                    ${story}
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>`;
-                    $("#Section").append(temp_html);
-                }
-            })
-        }
-    </script>
 </head>
 <body>
 
@@ -71,16 +17,45 @@
 <div class="firework"></div>
 
 <div class="container">
-<button class="w-btn w-btn-skin" type="button" onclick="window.location.href='/ranking'">
+    <button class="w-btn w-btn-skin" type="button" onclick="window.location.href='/ranking'">
         다른책 보러가기
     </button>
     <div id="Section">
+        <div class="info">
+            오늘의 {{ book['rank'] }}위!
+        </div>
+        <div class="mobile-layout">
+
+            <div class="actions">
+                <i class="fas fa-chevron-left"></i>
+                <i class="fas fa-bookmark"></i>
+            </div>
+            <div class="book-cover">
+                <img class="book-top" src="{{ book['image'] }}"
+                     width="200" height="252" alt="book-top"/>
+                <img class="book-side"
+                     src="https://raw.githubusercontent.com/atomic-variable/images-repo/e37f432405904a280858e5437ce1960753bc78a3/book-side.svg"
+                     alt="book-side"/>
+            </div>
+            <div class="preface">
+                <div class="content">
+                    <div class="header">
+                        <div class="title">{{ book['title'] }}</div>
+                        <div class="icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="author">저자 {{ book['writer'] }}</div>
+                    <div class="body">
+                        {{ book['story'] }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>
-
-
-
 
 
 </body>

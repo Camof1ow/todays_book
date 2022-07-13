@@ -19,19 +19,18 @@ def home():
 
 @blueprint.route("/main")
 def mainpage():
+    num = random.randrange(1, 40)
+    Tbook = db.bookinfo.find_one({'rank': str(num)}, {'_id': False})
+    print(Tbook['title'])
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         print(payload)
-        return render_template('main.html')
+        return render_template('main.html', book=Tbook)
     except jwt.ExpiredSignatureError:
         return redirect('/')
     except jwt.exceptions.DecodeError:
         return redirect("/")
 
 
-@blueprint.route("/Tbook", methods=["GET"])
-def get_Tbook():
-    num = random.randrange(1, 40)
-    Tbook = db.bookinfo.find_one({'rank': str(num)}, {'_id': False})
-    return jsonify({'Tbook': Tbook})
+

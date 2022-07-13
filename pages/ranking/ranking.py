@@ -21,10 +21,12 @@ blueprint = Blueprint("ranking", __name__, url_prefix='/ranking')
 @blueprint.route("/")
 def ranking():
     token_receive = request.cookies.get('mytoken')
+    ranking_list = list(db.bookinfo.find({}, {'_id': False}))
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         print(payload)
-        return render_template('ranking.html')
+        return render_template('ranking.html', rows=ranking_list)
+
     except jwt.ExpiredSignatureError:
         return redirect('/')
     except jwt.exceptions.DecodeError:
@@ -35,4 +37,6 @@ def ranking():
 def ranklist():
     ranking_list =list(db.bookinfo.find({},{'_id':False}))
     return jsonify({'books':ranking_list})
+
+
 
