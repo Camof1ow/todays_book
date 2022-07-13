@@ -52,11 +52,14 @@
                     $('#image').append(temp_image)
 
 
-                    let temp1 = `<div style="display: flex; align-items: center; height: 50px; margin-bottom: 5px">
-                                     <h1>${title}</h1>
-                                     <h5 style="margin-left: 20px">${writer}</h5>
-                                 </div>
-                                <span class="book_name">${story}</span>`
+                    let temp1 = `<div>
+                         <P style="position: absolute; width: 370px; height: 100px; right: 20px; overflow:auto">
+                             <span style="font-size: 17px"> ${title} </span></br>
+                             <span style="font-size: 15px; font-family: sans-serif; font-style: italic">--${writer}--</span></br>s
+                             <span style="text-overflow: ellipsis;">${story}</span></br>
+                         </P>
+                    </div>
+                    `
 
                     $('#body_data').append(temp1)
 
@@ -153,7 +156,7 @@
                 </table>
                 <div class='line'>
                 </div>
-                <div class='total' id="body_data">
+                <div style="position: relative" class='total' id="body_data">
 
                 </div>
             </div>
