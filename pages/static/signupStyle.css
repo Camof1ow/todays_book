@@ -129,6 +129,10 @@ h1 {
 <<<<<<< HEAD
 }
 
+input:disabled {
+    background: #F0F0F0;
+}
+
 .helpmsg{
     color: gray;
     font-size: xx-small;
