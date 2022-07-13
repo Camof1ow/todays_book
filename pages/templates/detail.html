@@ -16,6 +16,7 @@
     <script>
         $(document).ready(function () {
             show_book();
+            listing()
         });
 
         function show_book() {
@@ -29,7 +30,7 @@
                 url: "/detail/detail",
                 data: {},
                 success: function (response) {
-                   console.log(response["book"])
+                    console.log(response["book"])
                     let rows = (response)["book"]
                     let fid = rows.findIndex(v => v.title === id);
                     console.log(fid)
@@ -53,36 +54,77 @@
                     $('#body_data').append(temp)
 
 
+                }
 
+            });
+        }
+
+        function posting() {
+            let query = window.location.search;
+            let param = new URLSearchParams(query);
+            let id = param.get("id");
+            let comment = $("#comment").val();
+            let star = $("#star").val();
+            let date = new Date().toLocaleDateString();
+
+
+            $.ajax({
+                type: "POST",
+                url: "/detail/comment",
+                data: {
+                    star_give: star,
+                    comment_give: comment,
+                    id_give: id,
+                    date_give: date
+                },
+                success: function (response) {
+                    console.log("posting ")
+                    alert(response["msg"])
+                    window.location.reload()
+                }
+            });
+        }
+
+        function listing() {
+            $.ajax({
+                type: "GET",
+                url: "/detail/comment",
+                data: {},
+                success: function (response) {
+                    let comments = response["book_comment"]
+                    console.log(comments)
+                    for (let i = 0; i < comments.length; i++) {
+                        let query = window.location.search;
+                        let param = new URLSearchParams(query);
+                        let ids = param.get("id");
+                        let id_comment = comments[i]["id"]
+                        let book_comment = comments[i]["comment"]
+                        let star_comment = comments[i]["star"]
+                        let date = comments[i]["date"]
+
+                        let star_image = '⭐'.repeat(star_comment)
+
+                        console.log("get id" + ids)
+
+
+                        if (ids === id_comment) {
+                            temp_comment = `<div class="card mb-3" style="width: 1040px; background-color: #9c9f84; border-radius: 20px">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">${star_image}</h5>
+                                                    <p class="card-text">${book_comment}</p>
+                                                    <p class="card-text"><small class="text-muted">${date}</small></p>
+                                                </div>
+                                            </div>`
+
+                            $('#book_comment').append(temp_comment)
+                        }
                     }
-
-            });
-        }
-
-        function save_book() {
-            $.ajax({
-                type: "POST",
-                url: "/detail",
-                data: {sameple_give: '데이터전송'},
-                success: function (response) {
-                    alert(response["msg"])
                 }
-            });
-        }
-
-        function done_book(num) {
-            $.ajax({
-                type: "POST",
-                url: "/bucket/done",
-                data: {sameple_give: '데이터전송'},
-                success: function (response) {
-                    alert(response["msg"])
-                }
-            });
+            })
         }
 
     </script>
-  <style>
+    <style>
 
         .navbar {
             display: flex;
@@ -94,7 +136,7 @@
             height: 600px;
             background-color: #f7dcb4;
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
             padding: 40px;
         }
 
@@ -123,6 +165,7 @@
             background-color: #9c9f84;
             border-radius: 20px;
         }
+
         .upload {
             height: 200px;
             width: 1040px;
@@ -130,11 +173,13 @@
             border-radius: 20px;
             background-color: #9c9f84;
         }
+
         .mybtns {
             margin: 10px 0 0 10px;
             display: flex;
             justify-content: center;
         }
+
         img {
             filter: drop-shadow(5px 5px 5px #000);
         }
@@ -151,7 +196,7 @@
     </div>
     <div class="info">
         <div class="card mb-3" style="max-width: 540px; border-radius: 20px">
-            <div class="row g-0" >
+            <div class="row g-0">
                 <div class="col-md-8">
                     <div class="card-body" id="body_data">
 
@@ -161,36 +206,32 @@
         </div>
     </div>
 </div>
-<div class="back">
-    <div class="card mb-3" style="width: 1040px; background-color: #9c9f84; border-radius: 20px">
-        <div class="card-body">
-            <h5 class="card-title">⭐⭐⭐⭐⭐</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+<div class="back" id="book_comment">
+
+
+    <div class="upload">
+        <div class="mypost" id="post-box">
+
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">별점</label>
+                <select class="form-select" id="star">
+                    <option selected>-- 선택하기 --</option>
+                    <option value="1">⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="5">⭐⭐⭐⭐⭐</option>
+                </select>
+            </div>
+            <div class="form-floating">
+                <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
+                <label for="floatingTextarea2">코멘트</label>
+            </div>
+            <div class="mybtns">
+                <button onclick="posting()" type="button" class="btn btn-dark">기록하기</button>
+            </div>
         </div>
     </div>
-    <div class="upload"><div class="mypost" id="post-box">
-
-    <div class="input-group mb-3">
-        <label class="input-group-text" for="inputGroupSelect01">별점</label>
-        <select class="form-select" id="star">
-            <option selected>-- 선택하기 --</option>
-            <option value="1">⭐</option>
-            <option value="2">⭐⭐</option>
-            <option value="3">⭐⭐⭐</option>
-            <option value="4">⭐⭐⭐⭐</option>
-            <option value="5">⭐⭐⭐⭐⭐</option>
-        </select>
-    </div>
-    <div class="form-floating">
-        <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
-        <label for="floatingTextarea2">코멘트</label>
-    </div>
-    <div class="mybtns">
-        <button onclick="posting()" type="button" class="btn btn-dark">기록하기</button>
-    </div>
-</div></div>
 </div>
 </body>
 </html>
