@@ -23,6 +23,7 @@
             let param = new URLSearchParams(query);
             let id = param.get("id");
             console.log(id)
+
             $.ajax({
                 type: "GET",
                 url: "/detail/detail",
@@ -30,13 +31,15 @@
                 success: function (response) {
                    console.log(response["book"])
                     let rows = (response)["book"]
+                    let fid = rows.findIndex(v => v.title === id);
+                    console.log(fid)
 
-                    let rank = rows[id -1]['rank']
-                    let title = rows[id -1]['title']
-                    let writer = rows[id -1]['writer']
-                    let score = rows[id -1]['score']
-                    let image = rows[id -1]['image']
-                    let story = rows[id -1]['story']
+                    let rank = rows[fid]['rank']
+                    let title = rows[fid]['title']
+                    let writer = rows[fid]['writer']
+                    let score = rows[fid]['score']
+                    let image = rows[fid]['image']
+                    let story = rows[fid]['story']
 
                     temp_image = `<img src="${image}" alt="표지">`
 
