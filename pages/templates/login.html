@@ -51,13 +51,28 @@
                 },
                 success: function (response) {
                     if (response['result'] == 'success') {
-                        $.cookie('mytoken', response['token'], {path: '/login'});
-                        window.location.replace("/main")
+                        $.cookie('mytoken', response['token'], {expires: 1, path: '/'});
+                        window.location.replace('/main')
                     } else {
                         alert(response['msg'])
                     }
                 }
             });
+            {#$.ajax({#}
+            {#  type: "POST",#}
+            {#  url: "/login/check",#}
+            {#  data: { },#}
+            {#  success: function(response){#}
+            {#      let access_token = response['token']#}
+            {#      console.log((access_token))#}
+            {#       if (response['result'] == 'success') {#}
+            {#           alert()#}
+            {#           window.location.replace('/main')#}
+            {#        } else {#}
+            {#            alert(response['msg'])#}
+            {#        }#}
+            {#  }#}
+            {#})#}
         }
     </script>
 </head>
