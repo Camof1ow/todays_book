@@ -26,13 +26,12 @@ def ranking():
         print(payload)
         return render_template('ranking.html')
     except jwt.ExpiredSignatureError:
-        return redirect('/')
+        return "<script>alert(\'로그인 시간이 만료되었습니다.\');document.location.href=\"login\"</script>"
     except jwt.exceptions.DecodeError:
-        return redirect("/")
+        return "<script>alert(\'로그인이 필요합니다.\');document.location.href=\"login\"</script>"
 
 
 @blueprint.route('/rank', methods=['GET'])
 def ranklist():
-    ranking_list =list(db.bookinfo.find({},{'_id':False}))
-    return jsonify({'books':ranking_list})
-
+    ranking_list = list(db.bookinfo.find({}, {'_id': False}))
+    return jsonify({'books': ranking_list})

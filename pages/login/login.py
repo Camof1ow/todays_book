@@ -32,15 +32,16 @@ def login():
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
 
 
-# [유저 정보 확인 API]
-@app.route('/login/check', methods=['POST'])
-def logincheck():
-    token_receive = request.cookies.get('mytoken')
-    try:
-        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        print(payload)
-        return jsonify({'result': 'success'})
-    except jwt.ExpiredSignatureError:
-        return redirect('/')
-    except jwt.exceptions.DecodeError:
-        return redirect('/')
+# 토큰 미발급시 메인,랭킹,디테일 페이지 접근 불가
+# 다른 페이지 .py 파일에 추가해야함
+# @app.route('/login/check', methods=['POST'])
+# def logincheck():
+#     token_receive = request.cookies.get('mytoken')
+#     try:
+#         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+#         print(payload)
+#         return jsonify({'result': 'success'})
+#     except jwt.ExpiredSignatureError:
+#         return "<script>alert(\'로그인 시간이 만료되었습니다.\');document.location.href=\"login\"</script>"
+#     except jwt.exceptions.DecodeError:
+#         return "<script>alert(\'로그인이 필요합니다.\');document.location.href=\"login\"</script>"

@@ -25,9 +25,9 @@ def mainpage():
         print(payload)
         return render_template('main.html')
     except jwt.ExpiredSignatureError:
-        return redirect('/')
+        return "<script>alert(\'로그인 시간이 만료되었습니다.\');document.location.href=\"login\"</script>"
     except jwt.exceptions.DecodeError:
-        return redirect("/")
+        return "<script>alert(\'로그인이 필요합니다.\');document.location.href=\"login\"</script>"
 
 
 @blueprint.route("/Tbook", methods=["GET"])
