@@ -8,18 +8,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>오늘의 책📚</title>
 
-
     <script>
-
         $(document).ready(function () {
             Tbook();
-
         });
-
-
-
-
-
         function Tbook() {
             $.ajax({
                 type: 'GET',
@@ -67,11 +59,9 @@
                                         </div>
                                     </div>`;
                     $("#Section").append(temp_html);
-
                 }
             })
         }
-
     </script>
 </head>
 <body>

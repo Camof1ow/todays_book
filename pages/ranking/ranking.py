@@ -5,6 +5,7 @@ from pymongo import MongoClient
 
 import hashlib
 import os
+import jwt
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -19,7 +20,16 @@ blueprint = Blueprint("ranking", __name__, url_prefix='/ranking')
 
 @blueprint.route("/")
 def ranking():
-    return render_template('ranking.html')
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        print(payload)
+        return render_template('ranking.html')
+    except jwt.ExpiredSignatureError:
+        return redirect('/')
+    except jwt.exceptions.DecodeError:
+        return redirect("/")
+
 
 @blueprint.route('/rank', methods=['GET'])
 def ranklist():

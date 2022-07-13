@@ -51,8 +51,9 @@
                 },
                 success: function (response) {
                     if (response['result'] == 'success') {
-                        $.cookie('mytoken', response['token'], {path: '/login'});
-                        window.location.replace("/main")
+                        $.cookie('mytoken', response['token'], {expires: 1, path: '/'});
+                        alert(response['msg'])
+                        window.location.replace('/main')
                     } else {
                         alert(response['msg'])
                     }
