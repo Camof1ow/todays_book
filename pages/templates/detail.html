@@ -40,10 +40,8 @@
                     let fid = rows.findIndex(v => v.title === id);
                     console.log(fid)
 
-                    let rank = rows[fid]['rank']
                     let title = rows[fid]['title']
                     let writer = rows[fid]['writer']
-                    let score = rows[fid]['score']
                     let image = rows[fid]['image']
                     let story = rows[fid]['story']
 
@@ -195,8 +193,9 @@
                     </select>
                 </div>
                 댓글입력:
-                <input id="comment" class='input-field'></input>
-                <button class="w-btn w-btn-gray" type="button" onclick="posting()" style="font-size: 19px">등록하기</button>
+                <input id="comment" class='input-field'>
+                <button class="w-btn-neon2" type="button" onclick="posting()" style="font-size: 19px">등록하기</button>
+
 
             </div>
 
