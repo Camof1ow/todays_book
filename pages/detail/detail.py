@@ -47,5 +47,4 @@ def comment_write():
 @blueprint.route("/comment_get", methods=["GET"])
 def comment_get():
     comment = list(db.bookcomment.find({}, {'_id': False}))
-    print(comment)
     return jsonify({'book_comment': comment})
