@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5504810-358c-45c3-8bc7-55aa3c9eaec7" name="변경" comment="회원가입 완료 리디렉션 수정" />
+    <list default="true" id="c5504810-358c-45c3-8bc7-55aa3c9eaec7" name="변경" comment="detail.py print 제거">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/templates/ranking.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/templates/ranking.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,7 +133,8 @@
       <workItem from="1657719111058" duration="5664000" />
       <workItem from="1657725523452" duration="5348000" />
       <workItem from="1657756015865" duration="13811000" />
-      <workItem from="1657775112778" duration="659000" />
+      <workItem from="1657775112778" duration="1160000" />
+      <workItem from="1657776278736" duration="858000" />
     </task>
     <task id="LOCAL-00002" summary="detail 페이지 html 수정 css 파일추가">
       <created>1657709782258</created>
@@ -172,7 +178,21 @@
       <option name="project" value="LOCAL" />
       <updated>1657775581728</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="회원가입 완료 리디렉션 수정완료">
+      <created>1657775929698</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1657775929698</updated>
+    </task>
+    <task id="LOCAL-00009" summary="detail.py print 제거">
+      <created>1657776169644</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1657776169644</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,11 +228,13 @@
     <MESSAGE value="login/sign alert css 교체" />
     <MESSAGE value="detail page button animation 변경" />
     <MESSAGE value="회원가입 완료 리디렉션 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="회원가입 완료 리디렉션 수정" />
+    <MESSAGE value="회원가입 완료 리디렉션 수정완료" />
+    <MESSAGE value="detail.py print 제거" />
+    <option name="LAST_COMMIT_MESSAGE" value="detail.py print 제거" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/todays_book$config__1_.coverage" NAME="config (1) 커버리지 결과" MODIFIED="1657527692613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/todays_book$app.coverage" NAME="app 커버리지 결과" MODIFIED="1657775741499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/todays_book$app.coverage" NAME="app 커버리지 결과" MODIFIED="1657776282323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/todays_book$config.coverage" NAME="config 커버리지 결과" MODIFIED="1657527621698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
     <SUITE FILE_PATH="coverage/todays$detail.coverage" NAME="detail 커버리지 결과" MODIFIED="1657611258982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pages/detail" />
     <SUITE FILE_PATH="coverage/todays$app.coverage" NAME="app 커버리지 결과" MODIFIED="1657589393326" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

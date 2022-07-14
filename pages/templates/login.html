@@ -179,9 +179,9 @@
                 },
                 success: function () {
                     alert(username + " " + "님 회원가입을 축하드립니다!")
-                    setTimeout(function(){
-                    location.reload();
-                    },800); // 3000밀리초 = 3초
+                    setTimeout(function () {
+                        location.reload();
+                    }, 800); // 3000밀리초 = 3초
                 }
             });
         }
@@ -293,11 +293,9 @@
             <div class="login_id">
                 <input type="username" name="" id="userid" placeholder="아이디">
             </div>
-            <p id="help-id" class="helpmsg">아이디는 6~10자의 영문,숫자만 입력이 가능합니다.</p>
             <div class="login_pw">
                 <input type="password" name="" id="userpw" placeholder="비밀번호" autocomplete="off">
             </div>
-            <p id="help-pw" class="helpmsg">영문,숫자,특수문자(!@#$%^&*)를 필수로 사용해야합니다.</p>
             <div class="loginbtn">
                 <div class="submit">
                     <button onclick="login()">로그인</button>

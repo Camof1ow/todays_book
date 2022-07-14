@@ -14,15 +14,21 @@
             filter: brightness(70%);
         }
     </style>
+<script>
+    function logOut() {
+    document.cookie = "mytoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.href = "/"
+}
 
+</script>
 
 </head>
 
 <body>
 
 <div class="btns">
-    <button class="w-btn w-btn-gray" type="button" onclick="window.location.href = '/';">
-        홈으로
+    <button class="w-btn w-btn-gray" type="button" onclick="logOut();">
+        로그아웃
     </button>
 
     <button class="w-btn w-btn-skin" type="button" onclick="window.location.href = '/main'">
