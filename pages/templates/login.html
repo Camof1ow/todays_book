@@ -114,7 +114,7 @@
                 $("#help-nic").text("닉네임 형식을 확인해주세요. 영문,숫자,한글을 조합한 2자~10자").removeClass("is-safe").addClass("is-danger")
                 $("#help-nic").focus()
                 return;
-            }  else {
+            } else {
                 $("#help-nic").text("사용할 수 있는 닉네임 입니다.").removeClass("is-danger").addClass("is-success")
             }
             //유효성검사 통과시
@@ -128,9 +128,9 @@
                     nickname_give: nickname
                 },
                 success: function () {
-                        alert(username +" "+ "님 회원가입을 축하드립니다!")
-                        window.location.href="/main"
-                    }
+                    alert(username + " " + "님 회원가입을 축하드립니다!")
+                    window.location.href = "/main"
+                }
             });
         }
 
@@ -179,6 +179,8 @@
                         $("#user_id").focus()
                     } else {
                         $("#help-id").text("사용할 수 있는 아이디입니다.").removeClass("is-danger").addClass("is-success")
+                        document.getElementById('user_id').disabled = true;
+
                     }
                     $("#help-id").removeClass("is-loading")
                 }
@@ -187,12 +189,12 @@
     </script>
 </head>
 <body>
-<div class="wrap">
-    <div class="login">
-
-    </div>
-</div>
-
+{#<div class="wrap">#}
+{#    <div class="login">#}
+{##}
+{#    </div>#}
+{#</div>#}
+{##}
 
 <!-- partial:index.partial.html -->
 

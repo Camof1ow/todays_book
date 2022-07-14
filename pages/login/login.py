@@ -3,31 +3,28 @@ import jwt
 from pages import *
 from flask import Blueprint, url_for
 
-blueprint = Blueprint("login", __name__, url_prefix='/login')
+blueprint = Blueprint("login/?#", __name__, url_prefix='/login')
 
 
 @blueprint.route("/")
-def login1():
+def login():
     return render_template('login.html', title='오늘의 책📚-로그인')
 
 
 # 로그인 API
-@app.route('/login1', methods=['POST'])
-def login():
+@app.route("/login1", methods=['POST'])
+def login1():
     # 아이디 비밀번호 확인
     username_receive = request.form['username_give']
     password_receive = request.form['password_give']
     pw_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
     result = db.users.find_one({'username': username_receive, 'password': pw_hash})
-
     if result is not None:
         payload = {
             'id': username_receive,
-            'exp': datetime.datetime.utcnow() + timedelta(seconds=60*60)  # 로그인 24시간 유지
+            'exp': datetime.datetime.utcnow() + timedelta(seconds=60*60)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
-
-        print(payload)
         return jsonify({'result': 'success', 'token': token, 'msg': username_receive+' '+'님 환영합니다.'})
     # 찾지 못하면
     else:
