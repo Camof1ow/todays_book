@@ -8,7 +8,7 @@ blueprint = Blueprint("login/?#", __name__, url_prefix='/login')
 
 @blueprint.route("/")
 def login():
-    return render_template('login.html', title='오늘의 책📚-로그인')
+    return render_template('login.html', title='오늘의 책📚')
 
 
 # 로그인 API
