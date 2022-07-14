@@ -3,7 +3,7 @@ import jwt
 from pages import *
 from flask import Blueprint, url_for
 
-blueprint = Blueprint("login", __name__, url_prefix='/login')
+blueprint = Blueprint("login/?#", __name__, url_prefix='/login')
 
 
 @blueprint.route("/")
