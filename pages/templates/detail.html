@@ -10,7 +10,7 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="/pages/static/detail.css">
+    <link rel="stylesheet" href="/static/detail.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
@@ -54,9 +54,9 @@
 
                     let temp1 = `<div>
                          <P style="position: absolute; width: 370px; height: 100px; right: 20px; overflow:auto">
-                             <span style="font-size: 17px"> ${title} </span></br>
-                             <span style="font-size: 15px; font-family: sans-serif; font-style: italic">--${writer}--</span></br>s
-                             <span style="text-overflow: ellipsis;">${story}</span></br>
+                             <span style="font-size: 19px"> ${title} </span></br>
+                             <span style="font-size: 15px; font-family: sans-serif; font-style: italic">${writer}</span></br>
+                             <span style="font-size: 15px; text-overflow: ellipsis;">${story}</span></br>
                          </P>
                     </div>
                     `
@@ -98,7 +98,7 @@
         function listing() {
             $.ajax({
                 type: "GET",
-                url: "/detail/comment",
+                url: "/detail/comment_get",
                 data: {},
                 success: function (response) {
                     let comments = response["book_comment"]
@@ -132,13 +132,25 @@
         }
 
     </script>
+
+
 </head>
+
 <body>
+
+
+
 <div class='container' style="display: flex; flex-direction: column">
     <div class="btn-group" style="margin-bottom: 10px;">
-            <button style="background-color: #77aaee; border-radius: 10px; border-color: white;" onclick="window.location.href='/'">HOME</button>
-            <button style="background-color: white; border-radius: 10px; border-color: white;" onclick="window.location.href='/ranking'">BACK</button>
-        </div>
+        <button class="w-btn w-btn-gray" type="button" onclick="window.location.href='/'">
+            HOME
+        </button>
+
+        <button class="w-btn w-btn-skin" type="button" onclick="window.location.href='/ranking'">
+            BACK
+        </button>
+
+    </div>
     <div class='window'>
         <div class='order-info'>
             <div class='order-info-content'>
@@ -184,7 +196,7 @@
                 </div>
                 댓글입력:
                 <input id="comment" class='input-field'></input>
-                <button class='pay-btn' onclick="posting()">등록하기</button>
+                <button class="w-btn w-btn-gray" type="button" onclick="posting()" style="font-size: 19px">등록하기</button>
 
             </div>
 

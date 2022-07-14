@@ -19,16 +19,23 @@ m = hashlib.sha256() #hash
 from .main import main  # main.py 내용 호출
 from .detail import detail
 from .login import login
-from .signup import signup
+
 from .ranking import ranking
 
 
 app.register_blueprint(main.blueprint) # main module
 app.register_blueprint(login.blueprint) # login module
 app.register_blueprint(detail.blueprint) # signup module
-app.register_blueprint(signup.blueprint) # detail module
+
 app.register_blueprint(ranking.blueprint) # ranking module
 
+@app.before_request
+def before_request():
+    scheme = request.headers.get('X-Forwarded-Proto')
+    if scheme and scheme == 'http' and request.url.startswith('http://'):
+        url = request.url.replace('http://', 'https://', 1)
+        code = 301
+        return redirect(url, code=code)
 
 if __name__ == '__main__':
 

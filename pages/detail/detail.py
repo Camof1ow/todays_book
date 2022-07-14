@@ -32,3 +32,18 @@ def detail():
 def detail_get():
     book_list = list(db.bookinfo.find({}, {'_id': False}))
     return jsonify({'book': book_list})
+
+@blueprint.route("/comment", methods=["POST"])
+def comment_write():
+    star_receive = request.form['star_give']
+    comment_receive = request.form['comment_give']
+    id_receive = request.form['id_give']
+    date_receive = request.form['date_give']
+    db.bookcomment.insert_one({'star': star_receive, 'comment': comment_receive, 'id': id_receive, 'date':date_receive})
+    return jsonify({'msg': '등록완료!!'})
+
+@blueprint.route("/comment_get", methods=["GET"])
+def comment_get():
+    comment = list(db.bookcomment.find({}, {'_id': False}))
+    print(comment)
+    return jsonify({'book_comment': comment})

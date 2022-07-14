@@ -9,31 +9,47 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>오늘의 책📚</title>
 
+    <style>
+        img {
+            filter: brightness(70%);
+        }
+    </style>
 
 
 </head>
 
 <body>
 
-<section class="info">
-    <h1>오늘의 책📚 </h1>
-</section>
-<section class="cards-wrapper" id="Section">
-    {% for row in rows %}
-    <div class="card-grid-space">
-        <div class="num">{{ row['rank'] }}위</div>
-        <a class="card" href="/detail?id={{ row['title'] }}"
-           style="--bg-img: url({{ row['image'] }})">
-            <div>
-                <h2>{{ row['title'] }}</h2>
-                <p>{{ row['story'] }}</p>
-                <p>평점 {{ row['score'] }}</p>
+<div class="btns">
+    <button class="w-btn w-btn-gray" type="button" onclick="window.location.href = '/';">
+        홈으로
+    </button>
 
+    <button class="w-btn w-btn-skin" type="button" onclick="window.location.href = '/main'">
+        다시 추천 받기
+    </button>
+</div>
+
+
+<div id="vueBind" class="container">
+    {% for row in rows %}
+
+        <a href="/detail?id={{ row['title'] }}" class="card">
+            <div class="imgBox">
+                <img src="{{ row['image'] }}" :alt="{{ row['title'] }}">
+            </div>
+            <div class="content">
+                <div class="contentBox">
+
+                    <h3>{{ row['rank'] }}위<br>{{ row['title'] }}<br><span>{{ row['writer'] }}</span></h3>
+                </div>
+
+                </ul>
             </div>
         </a>
-    </div>
-    {% endfor %}
 
+    {% endfor %}
+</div>
 
 </section>
 </body>
